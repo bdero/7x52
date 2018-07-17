@@ -1,0 +1,24 @@
+{
+  "name": "7x52",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdero/7x52.git"
+  },
+  "author": "bdero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bdero/7x52/issues"
+  },
+  "homepage": "https://github.com/bdero/7x52#readme",
+  "devDependencies": {
+    "gh-pages": "^1.2.0",
+    "parcel-bundler": "^1.9.7",
+    "typescript": "^2.9.2"
+  }
+}
