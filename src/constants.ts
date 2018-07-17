@@ -1,4 +1,4 @@
-const SQUARE_SIZE = 10 // Pixels
+const SQUARE_SIZE = 20 // Pixels
 const GRID_WIDTH = 52
 const GRID_HEIGHT = 7
 export {SQUARE_SIZE, GRID_WIDTH, GRID_HEIGHT}
