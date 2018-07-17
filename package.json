@@ -2,9 +2,13 @@
   "name": "7x52",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel serve index.html -p 8080",
+    "build": "parcel build index.html --public-url .",
+    "watch": "parcel watch index.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
