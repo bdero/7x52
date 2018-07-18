@@ -27,4 +27,7 @@ class Grid {
 
 const gridInstance = new Grid()
 
-export default gridInstance
+export {
+    gridInstance as grid,
+    GridUnit
+}

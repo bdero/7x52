@@ -3,10 +3,22 @@ import {
     COLOR_OFF, COLOR_ON
 } from './constants'
 import Color from './color'
-import grid from './grid'
+import {grid, GridUnit} from './grid'
 
 
 let context : CanvasRenderingContext2D
+
+function drawGridSquare(x : number, y : number, color : Color, margin : number = 0) {
+    const xloc = x*SQUARE_SIZE
+    const yloc = y*SQUARE_SIZE
+    context.fillStyle = color.toString()
+    context.fillRect(
+        xloc + margin,
+        yloc + margin,
+        SQUARE_SIZE - margin*2,
+        SQUARE_SIZE - margin*2
+    )
+}
 
 const render : FrameRequestCallback = () : void => {
     context.fillStyle = 'red'
@@ -14,14 +26,10 @@ const render : FrameRequestCallback = () : void => {
     for (let y = 0; y < GRID_HEIGHT; y++) {
         for (let x = 0; x < GRID_WIDTH; x++) {
             const unit = grid.getUnit(x, y)
-            const xloc = x*SQUARE_SIZE
-            const yloc = y*SQUARE_SIZE
-            context.fillStyle = Color.lerp(COLOR_OFF, COLOR_ON, unit.saturation).toString()
-            context.fillRect(
-                xloc + GRID_UNIT_MARGIN,
-                yloc + GRID_UNIT_MARGIN,
-                SQUARE_SIZE - GRID_UNIT_MARGIN*2,
-                SQUARE_SIZE - GRID_UNIT_MARGIN*2
+            drawGridSquare(
+                x, y,
+                Color.lerp(COLOR_OFF, COLOR_ON, unit.saturation),
+                GRID_UNIT_MARGIN
             )
         }
     }
