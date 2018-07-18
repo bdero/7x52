@@ -4,6 +4,7 @@ import {
 } from './constants'
 import Color from './color'
 import {grid, GridUnit} from './grid'
+import {mouse} from './input'
 
 
 let context : CanvasRenderingContext2D
@@ -21,8 +22,21 @@ function drawGridSquare(x : number, y : number, color : Color, margin : number =
 }
 
 const render : FrameRequestCallback = () : void => {
+    // Background color
     context.fillStyle = 'red'
     context.fillRect(0, 0, context.canvas.width, context.canvas.height)
+
+    // Grid Selection
+    const selectX = Math.floor(mouse.x/SQUARE_SIZE)
+    const selectY = Math.floor(mouse.y/SQUARE_SIZE)
+    if (selectX >= 0 && selectY >= 0 && selectX < GRID_WIDTH && selectY < GRID_HEIGHT) {
+        drawGridSquare(
+            selectX, selectY,
+            new Color(255, 255, 255)
+        )
+    }
+
+    // Grid cells
     for (let y = 0; y < GRID_HEIGHT; y++) {
         for (let x = 0; x < GRID_WIDTH; x++) {
             const unit = grid.getUnit(x, y)
