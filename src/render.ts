@@ -3,8 +3,8 @@ import {
     COLOR_OFF, COLOR_ON
 } from './constants'
 import Color from './color'
-import {grid, GridUnit} from './grid'
-import {mouse} from './input'
+import {grid} from './grid'
+import {mouse, keys} from './input'
 
 
 let context : CanvasRenderingContext2D
@@ -33,7 +33,7 @@ const render : FrameRequestCallback = () : void => {
         drawGridSquare(selectX, selectY, Color.White)
 
         if (mouse.left) {
-            grid.getUnit(selectX, selectY).saturation = 1
+            grid.getUnit(selectX, selectY).saturation = keys.shift ? 0 : 1
         }
     }
 
