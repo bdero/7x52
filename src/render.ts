@@ -23,17 +23,18 @@ function drawGridSquare(x : number, y : number, color : Color, margin : number =
 
 const render : FrameRequestCallback = () : void => {
     // Background color
-    context.fillStyle = 'red'
+    context.fillStyle = new Color(0, 0, 0, 0.06).toString()
     context.fillRect(0, 0, context.canvas.width, context.canvas.height)
 
     // Grid Selection
     const selectX = Math.floor(mouse.x/SQUARE_SIZE)
     const selectY = Math.floor(mouse.y/SQUARE_SIZE)
     if (selectX >= 0 && selectY >= 0 && selectX < GRID_WIDTH && selectY < GRID_HEIGHT) {
-        drawGridSquare(
-            selectX, selectY,
-            new Color(255, 255, 255)
-        )
+        drawGridSquare(selectX, selectY, Color.White)
+
+        if (mouse.left) {
+            grid.getUnit(selectX, selectY).saturation = 1
+        }
     }
 
     // Grid cells

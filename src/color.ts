@@ -35,6 +35,9 @@ class Color {
             alpha ? Math.random()*255 : undefined
         )
     }
+
+    static readonly White = new Color(255, 255, 255)
+    static readonly Black = new Color(0, 0, 0)
 }
 
 export default Color
