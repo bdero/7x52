@@ -1,9 +1,7 @@
-import {GRID_HEIGHT, GRID_WIDTH, SQUARE_SIZE} from './constants'
+import {GRID_HEIGHT, GRID_WIDTH, SQUARE_SIZE, COLOR_OFF, COLOR_ON} from './constants'
 import Color from './color'
 import grid from './grid'
 
-const COLOR_OFF = new Color(100, 100, 100)
-const COLOR_ON = new Color(200, 200, 200)
 
 let context : CanvasRenderingContext2D
 
