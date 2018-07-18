@@ -2,6 +2,7 @@ interface Mouse {
     x : number
     y : number
     left : boolean
+    right : boolean
 }
 
 interface Keys {
@@ -10,7 +11,8 @@ interface Keys {
 
 const mouse : Mouse = {
     x : -1, y : -1,
-    left : false
+    left : false,
+    right : false
 }
 
 const keys : Keys = {shift: false}
@@ -20,14 +22,28 @@ function registerEvents(canvas : HTMLCanvasElement) : void {
         const rect = canvas.getBoundingClientRect()
         mouse.x = event.clientX - rect.left
         mouse.y = event.clientY - rect.top
+
         keys.shift = event.shiftKey
     })
 
     window.addEventListener('mousedown', (event : MouseEvent) => {
-        mouse.left = true
+        if (event.button == 2) {
+            mouse.right = true
+        } else {
+            mouse.left = true
+        }
     })
     window.addEventListener('mouseup', (event : MouseEvent) => {
-        mouse.left = false
+        if (event.button == 2) {
+            mouse.right = false
+        } else {
+            mouse.left = false
+        }
+    })
+
+    canvas.addEventListener("contextmenu", (event : Event) => {
+        // Absorb secondary clicks on the canvas (since we use it for erasing)
+        event.preventDefault()
     })
 
     window.addEventListener('keydown', (event : KeyboardEvent) => {

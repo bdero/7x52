@@ -32,8 +32,11 @@ const render : FrameRequestCallback = () : void => {
     if (selectX >= 0 && selectY >= 0 && selectX < GRID_WIDTH && selectY < GRID_HEIGHT) {
         drawGridSquare(selectX, selectY, Color.White)
 
+        const selectedUnit = grid.getUnit(selectX, selectY)
         if (mouse.left) {
-            grid.getUnit(selectX, selectY).saturation = keys.shift ? 0 : 1
+            selectedUnit.saturation = keys.shift ? 0 : 1
+        } else if (mouse.right) {
+            selectedUnit.saturation = 0
         }
     }
 
