@@ -3,7 +3,7 @@ import {
     COLOR_OFF, COLOR_ON
 } from './constants'
 import Color from './color'
-import {grid} from './grid'
+import {grid, GridUnit} from './grid'
 import {mouse, keys} from './input'
 
 
@@ -65,4 +65,13 @@ function beginRender(canvas : HTMLCanvasElement) : void {
     window.requestAnimationFrame(render)
 }
 
-export default beginRender
+function clearGrid() : void {
+    for (const x of grid.getUnits()) {
+        x.saturation = 0
+    }
+
+    context.fillStyle = Color.White.toString()
+    context.fillRect(0, 0, context.canvas.width, context.canvas.height)
+}
+
+export {beginRender, clearGrid}

@@ -17,7 +17,7 @@ const mouse : Mouse = {
 
 const keys : Keys = {shift: false}
 
-function registerEvents(canvas : HTMLCanvasElement) : void {
+function registerInputEvents(canvas : HTMLCanvasElement) : void {
     window.addEventListener('mousemove', (event : MouseEvent) => {
         const rect = canvas.getBoundingClientRect()
         mouse.x = event.clientX - rect.left
@@ -54,4 +54,4 @@ function registerEvents(canvas : HTMLCanvasElement) : void {
     })
 }
 
-export { mouse, keys, registerEvents }
+export { mouse, keys, registerInputEvents }

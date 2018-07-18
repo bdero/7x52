@@ -1,13 +1,22 @@
 import {GRID_HEIGHT, GRID_WIDTH, SQUARE_SIZE} from './constants'
-import beginRender from './render'
-import {registerEvents} from './input'
+import {beginRender, clearGrid} from './render'
+import {registerInputEvents} from './input'
+
+function select(id : string) : HTMLElement | null {
+    return document.querySelector(id)
+}
 
 const init : EventListener = () : void => {
-    let canvas : HTMLCanvasElement = <HTMLCanvasElement> document.getElementById('canvas')
+    const canvas = <HTMLCanvasElement> select('#gridcanvas')
     canvas.width = SQUARE_SIZE*GRID_WIDTH
     canvas.height = SQUARE_SIZE*GRID_HEIGHT
 
-    registerEvents(canvas)
+    const clearButton = <HTMLButtonElement> select('#clearbutton')
+    clearButton.onclick = () => {
+        clearGrid()
+    }
+
+    registerInputEvents(canvas)
     beginRender(canvas)
 }
 

@@ -23,6 +23,10 @@ class Grid {
     public getUnit(x : number, y : number) : GridUnit {
         return this.units[y*GRID_WIDTH + x]
     }
+
+    public getUnits() : GridUnit[] {
+        return this.units
+    }
 }
 
 const gridInstance = new Grid()
