@@ -1,4 +1,7 @@
-import {GRID_HEIGHT, GRID_WIDTH, SQUARE_SIZE, COLOR_OFF, COLOR_ON} from './constants'
+import {
+    GRID_HEIGHT, GRID_WIDTH, SQUARE_SIZE, GRID_UNIT_MARGIN,
+    COLOR_OFF, COLOR_ON
+} from './constants'
 import Color from './color'
 import grid from './grid'
 
@@ -15,8 +18,10 @@ const render : FrameRequestCallback = () : void => {
             const yloc = y*SQUARE_SIZE
             context.fillStyle = Color.lerp(COLOR_OFF, COLOR_ON, unit.saturation).toString()
             context.fillRect(
-                xloc, yloc,
-                xloc + SQUARE_SIZE, yloc + SQUARE_SIZE
+                xloc + GRID_UNIT_MARGIN,
+                yloc + GRID_UNIT_MARGIN,
+                SQUARE_SIZE - GRID_UNIT_MARGIN*2,
+                SQUARE_SIZE - GRID_UNIT_MARGIN*2
             )
         }
     }
