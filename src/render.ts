@@ -8,7 +8,14 @@ const render : FrameRequestCallback = () : void => {
     context.fillRect(0, 0, context.canvas.width, context.canvas.height)
     for (let y = 0; y < GRID_HEIGHT; y++) {
         for (let x = 0; x < GRID_WIDTH; x++) {
-            const unit = grid.getUnit(x, y)
+            console.log(x, y)
+            const xloc = x*SQUARE_SIZE
+            const yloc = y*SQUARE_SIZE
+            context.fillStyle = 'black'
+            context.fillRect(
+                xloc, yloc,
+                xloc + SQUARE_SIZE, yloc + SQUARE_SIZE
+            )
             unit.saturation
         }
     }
