@@ -16,7 +16,6 @@ const render : FrameRequestCallback = () : void => {
                 xloc, yloc,
                 xloc + SQUARE_SIZE, yloc + SQUARE_SIZE
             )
-            unit.saturation
         }
     }
     window.requestAnimationFrame(render)
