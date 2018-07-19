@@ -12,27 +12,31 @@
   </head>
   <body>
 
+    <div class="container">
+      <h1 class="title">7x52</h1>
+
+      <div class="main">
+        <canvas id="gridcanvas"></canvas>
+      </div>
+
+      <div class="controls">
+        <select id="format" class="format">
+          <option value="bash" selected>bash</option>
+          <option value="json">json</option>
+        </select>
+        <input id="amountslider" class="amountslider" min="1" max="50" value="20" type="range" />
+        <button id="genbutton" class="genbutton">Generate</button>
+        <button id="clearbutton" class="clearbutton">Clear</button>
+      </div>
+
+      <div class="output">
+        <textarea id="output" cols="60" rows="20"></textarea>
+      </div>
+    </div>
+
     <a class="forkme" href="https://github.com/bdero/7x52">
       <img src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
     </a>
-
-    <div class="main">
-      <canvas id="gridcanvas"></canvas>
-    </div>
-
-    <div class="controls">
-      <select id="format" class="format">
-        <option value="bash" selected>bash</option>
-        <option value="json">json</option>
-      </select>
-      <input id="amountslider" class="amountslider" min="1" max="50" value="20" type="range" />
-      <button id="genbutton" class="genbutton">Generate</button>
-      <button id="clearbutton" class="clearbutton">Clear</button>
-    </div>
-
-    <div class="output">
-      <textarea id="output" cols="60" rows="20"></textarea>
-    </div>
 
   </body>
 </html>

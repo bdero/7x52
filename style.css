@@ -1,7 +1,23 @@
+.container {
+    margin: auto;
+    text-align: center;
+}
+
+.title {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40pt
+}
+
 .main>canvas {
     z-index: 1;
     position: relative
 }
+
+.controls {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .forkme {
     z-index: 0;
 }
