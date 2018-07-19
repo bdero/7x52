@@ -20,12 +20,17 @@ class StringBuilder {
         this.resultString = ''
     }
 
-    public addLine(...strs : string[]) {
+    public add(...strs : string[]) {
         let append = ''
         for (const str of strs) {
             append += str
         }
-        this.resultString += append + '\n'
+        this.resultString += append
+    }
+
+    public addLine(...strs : string[]) {
+        strs.push('\n')
+        this.add(...strs)
     }
 
     public toString() : string {
