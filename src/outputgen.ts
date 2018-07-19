@@ -10,6 +10,7 @@ type OutputFormat = 'json' | 'bash'
 interface GridMoment {
     unit : GridUnit
     time : moment.Moment
+    count : number
 }
 
 class StringBuilder {
@@ -37,13 +38,15 @@ class StringBuilder {
     }
 }
 
-function* unitIter() : IterableIterator<GridMoment> {
+function* unitIter(maxOutput : number) : IterableIterator<GridMoment> {
     let current_day = FIRST_DAY.clone()
     for (let x = 0; x < GRID_WIDTH; x++) {
         for (let y = 0; y < GRID_HEIGHT; y++) {
+            const unit = grid.getUnit(x, y)
             yield {
-                unit: grid.getUnit(x, y),
+                unit: unit,
                 time: current_day.clone(),
+                count: Math.floor(unit.saturation*maxOutput)
             }
             current_day.add(1, 'day')
         }
@@ -57,9 +60,8 @@ function generateOutput(formatType : OutputFormat, maxOutput : number) : string 
         case 'json':
         output.addLine('{')
         let firstItem = true
-        for (const gridMoment of unitIter()) {
-            const count : number = Math.floor(gridMoment.unit.saturation*maxOutput)
-            if (count > 0) {
+        for (const gridMoment of unitIter(maxOutput)) {
+            if (gridMoment.count > 0) {
                 if (firstItem) {
                     firstItem = false
                 } else {
@@ -67,7 +69,7 @@ function generateOutput(formatType : OutputFormat, maxOutput : number) : string 
                 }
                 output.add(
                     '  "', gridMoment.time.format(GIT_DATE_FORMAT), '": ',
-                    count.toString(),
+                    gridMoment.count.toString(),
                 )
             }
         }
