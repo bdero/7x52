@@ -10,7 +10,7 @@ const COLOR_OFF = new Color(100, 100, 100)
 const COLOR_ON = new Color(200, 200, 200)
 
 const today = moment()
-const FIRST_DAY : moment.Moment = today.subtract(today.weekday() + 52*7)
+const FIRST_DAY : moment.Moment = today.subtract(today.weekday() + 52*7, 'days')
 
 // Example ouput: Wed Jul 18 20:54:28 2018 -0700
 const GIT_DATE_FORMAT = 'ddd MMM d HH:mm:ss Y ZZ'

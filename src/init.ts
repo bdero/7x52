@@ -20,7 +20,11 @@ const init : EventListener = () : void => {
     const genButton = <HTMLButtonElement> select('#genbutton')
     genButton.onclick = () => {
         const formatSelect = <HTMLSelectElement> select('#format')
-        const result = generateOutput(<OutputFormat> formatSelect.value)
+        const amountSlider = <HTMLInputElement> select('#amountslider')
+        const result = generateOutput(
+            <OutputFormat> formatSelect.value,
+            amountSlider.valueAsNumber
+        )
 
         const outputTextarea = <HTMLTextAreaElement> select('#output')
         outputTextarea.textContent = result

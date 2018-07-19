@@ -14,7 +14,8 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": false
+    "allowSyntheticDefaultImports": false,
+    "downlevelIteration": true,
   },
   "include": ["src/**/*"],
   "exclude": [".git", "node_modules"]
