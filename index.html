@@ -16,7 +16,16 @@
     </div>
 
     <div class="controls">
-      <button id="clearbutton">Clear</button>
+      <select name="format" id="format">
+        <option value="json">json</option>
+        <option value="bash">bash</option>
+      </select>
+      <button id="genbutton" class="genbutton">Generate</button>
+      <button id="clearbutton" class="clearbutton">Clear</button>
+    </div>
+
+    <div class="output">
+      <textarea name="output" id="output" cols="30" rows="10"></textarea>
     </div>
 
   </body>

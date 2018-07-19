@@ -1,6 +1,7 @@
 import {GRID_HEIGHT, GRID_WIDTH, SQUARE_SIZE} from './constants'
 import {beginRender, clearGrid} from './render'
 import {registerInputEvents} from './input'
+import {generateOutput, OutputFormat} from './outputgen'
 
 function select(id : string) : HTMLElement | null {
     return document.querySelector(id)
@@ -14,6 +15,15 @@ const init : EventListener = () : void => {
     const clearButton = <HTMLButtonElement> select('#clearbutton')
     clearButton.onclick = () => {
         clearGrid()
+    }
+
+    const genButton = <HTMLButtonElement> select('#genbutton')
+    genButton.onclick = () => {
+        const formatSelect = <HTMLSelectElement> select('#format')
+        const result = generateOutput(<OutputFormat> formatSelect.value)
+
+        const outputTextarea = <HTMLTextAreaElement> select('#output')
+        outputTextarea.textContent = result
     }
 
     registerInputEvents(canvas)
