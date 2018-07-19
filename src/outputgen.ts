@@ -75,6 +75,24 @@ function generateOutput(formatType : OutputFormat, maxOutput : number) : string 
         }
         output.addLine()
         output.addLine('}')
+        break;
+
+        case 'bash':
+        output.addLine(`#!/bin/bash
+function commit_7x52 {
+  for i in $(seq 1 $1)
+  do
+    git commit -m "7x52" --allow-empty --date="$2"
+  done
+}`)
+        for (const gridMoment of unitIter(maxOutput)) {
+            if (gridMoment.count > 0) {
+                output.addLine(
+                    'commit_7x52 ', gridMoment.count.toString(),
+                    ' "', gridMoment.time.format(GIT_DATE_FORMAT), '"'
+                )
+            }
+        }
     }
 
     return output.toString()
