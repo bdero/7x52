@@ -1,0 +1,13 @@
+.main>canvas {
+    z-index: 1;
+    position: relative
+}
+.forkme {
+    z-index: 0;
+}
+.forkme>img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+}
